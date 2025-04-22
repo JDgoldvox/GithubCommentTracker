@@ -1,5 +1,7 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
 
 def get_user_repositories():
     url = f"{base_url}/users/{username}/repos"
@@ -30,9 +32,13 @@ json_string = get_user_repositories() #gets json as string
 
 #print(pretty_json)
 
-if(json_string != None):
-    for repo in json_string:
-        print(repo["name"])
-else:
-    print("Error with request")
+load_dotenv()  # Load variables from .env
+api_key = os.getenv("API_KEY")
+print(api_key)
+
+# if(json_string != None):
+#     for repo in json_string:
+#         print(repo["name"])
+# else:
+#     print("Error with request")
 
